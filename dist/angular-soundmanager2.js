@@ -4820,7 +4820,7 @@ ngSoundManager.directive('soundManager', ['$filter', 'angularPlayer',
                 });
                 scope.$on('currentTrack:position', function(event, data) {
                     scope.$apply(function() {
-                        scope.currentPostion = $filter('humanTime')(data);
+                        scope.currentPosition = $filter('humanTime')(data);
                     });
                 });
                 scope.$on('currentTrack:duration', function(event, data) {
@@ -4844,6 +4844,7 @@ ngSoundManager.directive('soundManager', ['$filter', 'angularPlayer',
         };
     }
 ]);
+
 
 ngSoundManager.directive('musicPlayer', ['angularPlayer', '$log',
     function(angularPlayer, $log) {
