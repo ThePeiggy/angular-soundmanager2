@@ -4689,7 +4689,6 @@ ngSoundManager.factory('angularPlayer', ['$rootScope', '$log',
                         //start first track if repeat is on
                         this.playTrack(soundManager.soundIDs[0]);
                     } else {
-                        //breadcase not playing anything
                         this.stop();
                         $rootScope.$broadcast('music:isPlaying', isPlaying);
                     }
@@ -5094,7 +5093,7 @@ ngSoundManager.directive('playAll', ['angularPlayer', '$log',
                         for(var i = 0; i < scope.songs.length; i++) {
                             angularPlayer.addTrack(scope.songs[i]);
                         }
-
+                        
                         if (attrs.play != 'false') {
                             //play first song
                             angularPlayer.play();
@@ -5160,7 +5159,7 @@ ngSoundManager.directive('playPauseToggle', ['angularPlayer',
                         }
                     }
                 });
-
+                
                 element.bind('click', function(event) {
                     if(angularPlayer.isPlayingStatus()) {
                         //if playing then pause
@@ -5168,7 +5167,7 @@ ngSoundManager.directive('playPauseToggle', ['angularPlayer',
                     } else {
                         //else play if not playing
                         angularPlayer.play();
-
+                        
                     }
                 });
             }

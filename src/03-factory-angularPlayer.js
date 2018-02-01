@@ -1,6 +1,6 @@
 ngSoundManager.factory('angularPlayer', ['$rootScope', '$log',
     function($rootScope, $log) {
-        
+
         var currentTrack = null,
             repeat = false,
             autoPlay = true,
@@ -8,7 +8,7 @@ ngSoundManager.factory('angularPlayer', ['$rootScope', '$log',
             volume = 90,
             trackProgress = 0,
             playlist = [];
-        
+
         return {
             /**
              * Initialize soundmanager,
@@ -270,8 +270,7 @@ ngSoundManager.factory('angularPlayer', ['$rootScope', '$log',
                         //start first track if repeat is on
                         this.playTrack(soundManager.soundIDs[0]);
                     } else {
-                        //breadcase not playing anything
-                        isPlaying = false;
+                        this.stop();
                         $rootScope.$broadcast('music:isPlaying', isPlaying);
                     }
                 }
@@ -287,7 +286,8 @@ ngSoundManager.factory('angularPlayer', ['$rootScope', '$log',
                 if(typeof prevTrack !== 'undefined') {
                     this.playTrack(prevTrack);
                 } else {
-                    $log.debug('no prev track found!');
+                    this.stop();
+                    $rootScope.$broadcast('music:isPlaying', isPlaying);
                 }
             },
             mute: function() {
